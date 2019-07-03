@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package marathon;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -58,7 +57,7 @@ public class TheChineseJunquillo {
 
         while (itr.hasNext()) {
             pair = (int[]) itr.next();
-            System.out.println(pair[0] + pair[1]);
+            System.out.println(pair[0] + "--" + pair[1]);
         }
     }
 
