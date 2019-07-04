@@ -25,10 +25,10 @@ public class TheChineseJunquillo {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        int[] pair;
+        double[] pair;
         ArrayList data = new ArrayList<>();
 
-        int j, k;
+        double j, k;
 
         String lines;
         String[] strs;
@@ -36,13 +36,13 @@ public class TheChineseJunquillo {
         do {
             lines = br.readLine();
 
-            strs = lines.trim().split("\\s+");
+            strs = lines.trim().split(" ");
 
             j = Integer.parseInt(strs[0]);
             k = Integer.parseInt(strs[1]);
 
             if ((j >= 0 && j <= 10000) && (k >= 0 && j <= 100)) {
-                pair = new int[]{j, k};
+                pair = new double[]{j, k};
 
                 data.add(pair);
             } else {
@@ -51,13 +51,25 @@ public class TheChineseJunquillo {
 
         } while (j != 0 || k != 0);
 
-        System.out.println("Output");
+        System.out.println();
+
+        int fil = data.size() - 1;
+
+        double[][] aDepth = new double[fil][3];
 
         Iterator itr = data.iterator();
 
-        while (itr.hasNext()) {
-            pair = (int[]) itr.next();
-            System.out.println(pair[0] + "--" + pair[1]);
+        int i = 0;
+        while (i < fil) {
+            pair = (double[]) itr.next();
+            aDepth[i][0] = pair[0] / 2;
+            aDepth[i][1] = pair[1] / 100;
+
+            aDepth[i][2] = (Math.pow(aDepth[i][0], 2) - Math.pow(aDepth[i][1], 2)) / (2 * aDepth[i][1]);
+            aDepth[i][2] = (double) Math.round(aDepth[i][2] * 10) / 10;
+
+            System.out.println(aDepth[i][2]);
+            i++;
         }
     }
 
